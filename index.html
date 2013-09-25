@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>shoutbox - shout your thoughts!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src="plugins/jquery/jquery.js"></script>
+		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<script src="plugins/bootstrap/bootstrap.js"></script>
+		<script src = "plugins/parse/js.parse.js"></script>
+		<script src = "shout.js"></script>
+	</head>
+	<body data-offset="50" data-twttr-rendered="true">
+		<div align="center" style="margin-top:50px;">
+			<div id="signinDiv">
+				<input type="text" id="inputSignInEmail" value="" placeholder="Email" /><BR>
+				<input type="password" id="inputSignInPwd" value="" placeholder="Password" /><BR>
+				<button class="btn btn-medium btn-success" type="button" onclick="signin();">Sign In</button><BR>
+				<span><small class="muted">I don't have account, <a href="#" onclick="showSignupDiv();">SignUp</a></small></span>
+				<span id=""></span>
+			</div>
+			<div id="signupDiv" style="display:none">
+				<input type="text" id="inputSignUpName" value="" placeholder="Name" /><BR>
+				<input type="text" id="inputSignUpEmail" value="" placeholder="Email" /><BR>
+				<input type="password" id="inputSignUpPwd" value="" placeholder="Password" /><BR>
+				<button class="btn btn-medium btn-success" type="button" onclick="signup();">Sign Up</button><BR>
+				<small class="muted">I already have an account, <a href="#" onclick="showSigninDiv();">SignIn</a></small>
+			</div>
+		</div>
+	</body>
+</html>
