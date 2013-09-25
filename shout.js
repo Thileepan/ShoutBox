@@ -1,3 +1,6 @@
+//Author: Thileepan Sivanandham
+//Email: sktgthill@gmail.com
+
 //Initialize parse
 Parse.initialize('rrP68oytm7Q6QmHmaNsYZiBo7a9ZARcRtT5tOMox', 'xIt8fDW8ke6rfFJa1ewGDObxgsSwxD73BRkYSSzJ');
 
@@ -36,15 +39,27 @@ function signin()
 	});
 }
 
+function isUserLoggedIn()
+{
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+		// do stuff with the user
+		//console.log(currentUser);
+		window.location.href = "shouts.html";
+	} else {
+		// show the signup or login page
+		//window.location.href = "shouts.html";
+	}
+}
+
 function currentLoggedInUser()
 {
 	var currentUser = Parse.User.current();
 	if (currentUser) {
 		// do stuff with the user
-		console.log(currentUser);
+		return currentUser.get('firstname');
 	} else {
-		// show the signup or login page
-		window.location.href = "shouts.html";
+		return "";
 	}
 }
 
@@ -74,19 +89,42 @@ function signup()
 	});
 }
 
+function checkForBlockWords(string, array){
+    var arrKeys = array.length;
+    var match = false;
+    var patt;
+    for(i=0; i < arrKeys; i++ ){
+        patt = new RegExp(array[i]);
+        if(patt.test(string))
+		{
+			match = true;
+			return match;
+		}
+    }
+    return match;
+}
+
 function shout()
 {
 	var message = document.getElementById('shoutarea').value;
+	if(	checkForBlockWords(message, blockWords))
+	{
+		alert("ShoutBox detects abuse words in your shout. Please act as a human being.");
+		return false;
+	}
+
 	var Shouts = Parse.Object.extend("Shouts");
 	var shouts = new Shouts();
+	var user = currentLoggedInUser();	
 	 
 	shouts.set("message", message);
-	shouts.set("createdBy", "Thileepan");
+	shouts.set("createdBy", user);
 	shouts.set("createdOn", "2013-09-26");
 	 
 	shouts.save(null, {
 	  success: function(shouts) {
 		//alert('New object created with objectId: ' + shouts.id);
+		document.getElementById('shoutarea').value = "";
 		getShouts();
 	  },
 	  error: function(shouts, error) {
@@ -100,6 +138,7 @@ function getShouts()
 	document.getElementById('shoutBoxDiv').innerHTML = '<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...';
 	var Shouts = Parse.Object.extend("Shouts");
 	var query = new Parse.Query(Shouts);
+	query.descending("createdAt");
 	query.find({
 	  success: function(results) {
 		// The object was retrieved successfully.
@@ -107,8 +146,9 @@ function getShouts()
 		//alert("Successfully retrieved " + results.length + " scores.");
 		for (var i = 0; i < results.length; i++) {
 		  var object = results[i];
+		  console.log(object);
 		  //alert(object.id + ' - ' + object.get('message'));
-		  shoutBoxHTML += '<tr><td>' + object.get('message') + '</td></tr>';
+		  shoutBoxHTML += '<tr><td><span class="label label-info">' + object.get('createdBy') + '</span>&nbsp;' + object.get('message') + '</td></tr>';
 		}
 		shoutBoxHTML += '</table>';
 		document.getElementById('shoutBoxDiv').innerHTML = shoutBoxHTML;
