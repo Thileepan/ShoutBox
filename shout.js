@@ -97,6 +97,7 @@ function shout()
 
 function getShouts()
 {	
+	document.getElementById('shoutBoxDiv').innerHTML = '<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...';
 	var Shouts = Parse.Object.extend("Shouts");
 	var query = new Parse.Query(Shouts);
 	query.find({
