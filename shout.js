@@ -16,6 +16,7 @@ function showSignupDiv()
 function logout()
 {
 	Parse.User.logOut();
+	window.location.href = "index.html";
 }
 
 function signin()
