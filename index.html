@@ -13,27 +13,32 @@
 		<script src = "shout.js"></script>
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
-		<div align="center" style="margin-top:150px;">
-			<b>ShoutBox</b><BR><small class="muted">Shout your thoughts!</small>
+		<div class="container">
+			<div class="row" style="margin-top:150px;">
+				<div align="center">
+					<h3>ShoutBox</h3>
+				</div>
+			</div>
 			<div id="signinDiv">
-				<BR>
-				<input type="text" id="inputSignInEmail" value="" placeholder="Email" /><BR>
-				<input type="password" id="inputSignInPwd" value="" placeholder="Password" /><BR>
-				<button class="btn btn-medium btn-success" type="button" onclick="signin();">Sign In</button><BR>
-				<span><small class="muted">I don't have account, <a href="#" onclick="showSignupDiv();">SignUp</a></small></span>
-				<span id=""></span>
+				<form role="form">
+					<input type="text" id="inputSignInEmail" value="" class="form-control" placeholder="Email" /><BR>
+					<input type="password" id="inputSignInPwd" value="" class="form-control" placeholder="Password" /><BR>
+					<button class="btn btn-medium btn-success" type="button" onclick="signin();">Sign In</button><BR>
+					<span><small class="muted">I don't have account, <a href="#" onclick="showSignupDiv();">SignUp</a></small></span>
+				</form>
 			</div>
 			<div id="signupDiv" style="display:none">
-				<BR>
-				<input type="text" id="inputSignUpName" value="" placeholder="Name" /><BR>
-				<input type="text" id="inputSignUpEmail" value="" placeholder="Email" /><BR>
-				<input type="password" id="inputSignUpPwd" value="" placeholder="Password" /><BR>
-				<button class="btn btn-medium btn-success" type="button" onclick="signup();">Sign Up</button><BR>
-				<small class="muted">I already have an account, <a href="#" onclick="showSigninDiv();">SignIn</a></small>
+				<form role="form">
+					<input type="text" id="inputSignUpName" value="" class="form-control" placeholder="Name" /><BR>
+					<input type="text" id="inputSignUpEmail" value="" class="form-control" placeholder="Email" /><BR>
+					<input type="password" id="inputSignUpPwd" value="" class="form-control" placeholder="Password" /><BR>
+					<button class="btn btn-medium btn-success" type="button" onclick="signup();">Sign Up</button><BR>
+					<small class="muted">I already have an account, <a href="#" onclick="showSigninDiv();">SignIn</a></small>
+				</form>
 			</div>
 		</div>
 		<script type="text/javascript">
-			isUserLoggedIn();
+			//isUserLoggedIn();
 		</script>
 	</body>
 </html>
