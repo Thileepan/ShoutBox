@@ -1,3 +1,4 @@
+/*
 html, body
 {
 	padding: 0;
@@ -35,6 +36,7 @@ a, a:link, a:active, a:visited, a:hover
 	color: #333;
 	text-decoration: underline;
 }
+*/
 pre
 {
 	font-size: 12px;
@@ -50,7 +52,8 @@ pre
 #header,
 .header
 {
-	background: #999;
+	/*background: #999;*/
+	background: black;
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
