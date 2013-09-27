@@ -6,39 +6,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script src="plugins/jquery/jquery.js"></script>
-		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" href="css/custom.css">
-		<script src="plugins/bootstrap/bootstrap.js"></script>
+		<script src="plugins/bootstrap/js/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
 		<script src = "shout.js"></script>
+		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
 		<div class="container">
 			<div class="row" style="margin-top:150px;">
-				<div align="center">
-					<h3>ShoutBox</h3>
+				<div class="col-xs-12" align="center">
+					<b>ShoutBox</b><BR><small>Shout your thoughts!</small><BR><BR>
 				</div>
 			</div>
-			<div id="signinDiv">
-				<form role="form">
-					<input type="text" id="inputSignInEmail" value="" class="form-control" placeholder="Email" /><BR>
-					<input type="password" id="inputSignInPwd" value="" class="form-control" placeholder="Password" /><BR>
-					<button class="btn btn-medium btn-success" type="button" onclick="signin();">Sign In</button><BR>
-					<span><small class="muted">I don't have account, <a href="#" onclick="showSignupDiv();">SignUp</a></small></span>
-				</form>
+			<div class="row" id="signinDiv">
+				<div class="col-xs-12">
+					<form>
+						<input type="text" id="inputSignInEmail" value="" class="form-control" placeholder="Email" autofocus/><BR>
+						<input type="password" id="inputSignInPwd" value="" class="form-control" placeholder="Password" /><BR>
+						<button id="btnSignIn" class="btn btn-medium btn-success btn-block" type="button" data-loading-text="Please wait..." onclick="signin();">Sign In</button><BR>						
+					</form>					
+				</div>
+				<div align="center">
+					<span><small class="muted">I don't have account, <a href="#" onclick="showSignupDiv();">Sign Up</a></small></span>
+				</div>
 			</div>
-			<div id="signupDiv" style="display:none">
-				<form role="form">
-					<input type="text" id="inputSignUpName" value="" class="form-control" placeholder="Name" /><BR>
-					<input type="text" id="inputSignUpEmail" value="" class="form-control" placeholder="Email" /><BR>
-					<input type="password" id="inputSignUpPwd" value="" class="form-control" placeholder="Password" /><BR>
-					<button class="btn btn-medium btn-success" type="button" onclick="signup();">Sign Up</button><BR>
-					<small class="muted">I already have an account, <a href="#" onclick="showSigninDiv();">SignIn</a></small>
-				</form>
+			<div class="row" id="signupDiv" style="display:none">
+				<div class="col-xs-12">
+					<form role="form">
+						<input type="text" id="inputSignUpName" value="" class="form-control" placeholder="Name"/><BR>
+						<input type="text" id="inputSignUpEmail" value="" class="form-control" placeholder="Email" /><BR>
+						<input type="password" id="inputSignUpPwd" value="" class="form-control" placeholder="Password" /><BR>
+						<button id="btnSignUp" class="btn btn-medium btn-success btn-block" type="button" data-loading-text="Please wait..." onclick="signup();">Sign Up</button><BR>						
+					</form>
+				</div>
+				<div align="center">
+					<span><small class="muted">I already have an account, <a href="#" onclick="showSigninDiv();">Sign In</a></small></span>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
-			//isUserLoggedIn();
+			isUserLoggedIn();
 		</script>
 	</body>
 </html>
