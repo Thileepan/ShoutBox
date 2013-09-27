@@ -12,12 +12,46 @@
 		<script src = "plugins/parse/js.parse.js"></script>
 		<script src = "shout.js"></script>
 		<script src = "blockwords.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
+		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
+		<script src="plugins/mmenu/jquery.mmenu.js"></script>
+		<script src="plugins/hammer/jquery.hammer.js"></script>
+		<script src="plugins/timeago/jquery.timeago.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+				ShoutBox
+			</div>
+			<div id="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<textarea class="form-control" rows="3" id="shoutarea"></textarea><BR>
+						<button class="btn btn-medium btn-success btn-block" type="button" onclick="shout();">Shout</button>
+						<BR>
+						<a href="#" onclick="getShouts();">Refresh</a>
+						<div id="shoutBoxDiv">						
+							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...
+						</div>
+					</div>				
+				</div>
+			</div>
+			<nav id="menu">
+				<ul>
+					<li class="Selected"><a href="#">Profile</a></li>
+					<li><a href="#">Shouters</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#" onclick="logout();">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!--
 		<div class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
-				<div class="container-fluid">
+				<div class="container">
 					<ul class="nav pull-left">
 						<li class="active"><a class="brand" href="#">shoutbox</a></li>
 					</ul>
@@ -27,12 +61,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="container-fluid" style="padding-top:50px;">
-			<div class="row-fluid">
-				<div align="center">
-					<textarea rows="3" id="shoutarea"></textarea><BR>
-					<button class="btn btn-medium btn-success" type="button" onclick="shout();">Shout</button>
-					<BR><BR>
+		<div class="container" style="padding-top:70px;">
+			<div class="row">
+				<div class="col-xs-12">
+					<textarea class="form-control" rows="3" id="shoutarea"></textarea><BR>
+					<button class="btn btn-medium btn-success btn-block" type="button" onclick="shout();">Shout</button>
+					<BR>
 					<a href="#" onclick="getShouts();">Refresh</a>
 					<div id="shoutBoxDiv">						
 						<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...
@@ -40,8 +74,15 @@
 				</div>				
 			</div>
 		</div>
+		-->
 		<script type="text/javascript">
 			getShouts();
+			$(function() {
+				$('nav#menu').mmenu({
+					dragOpen: true
+				});
+			});
+			
 		</script>
 	</body>
 </html>
