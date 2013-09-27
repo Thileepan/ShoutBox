@@ -169,9 +169,11 @@ function shout()
 	var shouts = new Shouts();
 	var user = currentLoggedInUser();	
 	 
+	var d1 = new Date();
+	var createdOn = d1.toString('yyyy-MM-dd');
 	shouts.set("message", message);
 	shouts.set("createdBy", user);
-	shouts.set("createdOn", "2013-09-26");
+	shouts.set("createdOn", createdOn);
 	 
 	shouts.save(null, {
 	  success: function(shouts) {
@@ -200,7 +202,11 @@ function getShouts()
 		  var object = results[i];
 		  //console.log(object);
 		  //alert(object.id + ' - ' + object.get('message'));
-		 shoutBoxHTML += '<a href="#" class="list-group-item"><h4 class="list-group-item-heading"><span class="label label-primary">' + object.get('createdBy') + '</span></h4><abbr class="timeago pull-right">'+jQuery.timeago(object.get('createdOn'))+'</abbr><p class="list-group-item-text">' + object.get('message') + '</p></a>';
+		 var _time = object.get('createdOn');
+//		 console.log(_time);
+		 shoutBoxHTML += '<a href="#" class="list-group-item">';
+			shoutBoxHTML += '<h4 class="list-group-item-heading"><span class="label label-primary">' + object.get('createdBy') + '</span></h4><small><abbr class="timeago pull-right">'+jQuery.timeago(_time)+'</abbr></small><p class="list-group-item-text">' + object.get('message') + '</p>';
+		shoutBoxHTML += '</a>';
 		}
 		shoutBoxHTML += '</div>';
 		document.getElementById('shoutBoxDiv').innerHTML = shoutBoxHTML;
