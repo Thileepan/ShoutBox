@@ -8229,7 +8229,7 @@
    * History serves as a global router (per frame) to handle hashchange
    * events or pushState, match the appropriate route, and trigger
    * callbacks. You shouldn't ever have to create one of these yourself
-   * â€” you should use the reference to <code>Parse.history</code>
+   * — you should use the reference to <code>Parse.history</code>
    * that will be created for you automatically if you make use of 
    * Routers with routes.
    * @class

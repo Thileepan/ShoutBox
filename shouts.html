@@ -10,14 +10,16 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<script src="plugins/bootstrap/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
-		<script src = "shout.js"></script>
-		<script src = "blockwords.js"></script>
+		<script src = "js/auth.js"></script>
+		<script src = "js/shout.js"></script>
+		<script src = "js/blockwords.js"></script>
 
 		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
 		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
 		<script src="plugins/mmenu/jquery.mmenu.js"></script>
 		<script src="plugins/hammer/jquery.hammer.js"></script>
-		<script src="plugins/timeago/jquery.timeago.js"></script>
+		<script src="plugins/moment/moment.min.js"></script>
+		<script src="plugins/livestamp/livestamp.min.js"></script>		
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
@@ -76,12 +78,13 @@
 		</div>
 		-->
 		<script type="text/javascript">
-			getShouts();
+			
 			$(function() {
 				$('nav#menu').mmenu({
 					dragOpen: true
 				});
 			});
+			getShouts();
 			
 		</script>
 	</body>
