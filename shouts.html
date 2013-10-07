@@ -33,12 +33,18 @@
 					<div class="col-xs-12">
 						<textarea class="form-control" rows="3" id="shoutarea"></textarea><BR>
 						<button id="btnShout" class="btn btn-medium btn-success btn-block" type="button" onclick="shout();" data-loading-text="Please wait...">Shout</button>
-						<BR>
-						<div class="row"><div class="col-xs-12"><a href="#" class="curHand" onclick="getShouts();">Refresh</a></div></div>
-						<div id="shoutBoxDiv">						
-							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...
-						</div>
+						<BR>						
 					</div>				
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="#" class="curHand" onclick="getShouts();">Refresh</a>
+					</div>
+				</div>
+				<div class="row">	
+					<div id="shoutBoxDiv" class="col-xs-12">
+							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...
+					</div>
 				</div>
 			</div>
 			<nav id="menu">
