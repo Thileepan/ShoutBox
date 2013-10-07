@@ -8,7 +8,7 @@
 		<script src="plugins/jquery/jquery.js"></script>
 		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="css/custom.css">
-		<script src="plugins/bootstrap/js/bootstrap.js"></script>
+		<script src="plugins/bootstrap/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
 		<script src = "js/auth.js"></script>
 		<script src = "js/shout.js"></script>
@@ -19,32 +19,29 @@
 		<script src="plugins/mmenu/jquery.mmenu.js"></script>
 		<script src="plugins/hammer/jquery.hammer.js"></script>
 		<script src="plugins/moment/moment.min.js"></script>
-		<script src="plugins/livestamp/livestamp.min.js"></script>		
+		<script src="plugins/livestamp/livestamp.min.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
 		<div id="page">
 			<div id="header">
 				<a href="#menu"></a>
-				ShoutBox
+				Shouters
 			</div>
 			<div id="content">
 				<div class="row">
 					<div class="col-xs-12">
-						<textarea class="form-control" rows="3" id="shoutarea"></textarea><BR>
-						<button id="btnShout" class="btn btn-medium btn-success btn-block" type="button" onclick="shout();" data-loading-text="Please wait...">Shout</button>
-						<BR>
-						<div class="row"><div class="col-xs-12"><a href="#" class="curHand" onclick="getShouts();">Refresh</a></div></div>
 						<div id="shoutBoxDiv">						
-							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouts...
+							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouters...
 						</div>
 					</div>				
 				</div>
 			</div>
 			<nav id="menu">
 				<ul>
-					<li class="Selected"><a href="#">Profile</a></li>
-					<li><a href="shouters.html">Shouters</a></li>
+					<li><a href="shouts.html">Home</a></li>
+					<li><a href="#">Profile</a></li>
+					<li class="Selected"><a href="shouters.html">Shouters</a></li>
 					<li><a href="#">Settings</a></li>
 					<li><a href="#" onclick="logout();">Logout</a></li>
 				</ul>
@@ -57,7 +54,7 @@
 					dragOpen: true
 				});
 			});
-			getShouts();
+			getShouters();
 			
 		</script>
 	</body>

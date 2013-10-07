@@ -27,6 +27,7 @@ function shout()
 		alert("ShoutBox detects abuse words in your shout. Please act as a human being.");
 		return false;
 	}
+	$('#btnShout').button('loading');
 
 	var Shouts = Parse.Object.extend("Shouts");
 	var shouts = new Shouts();
@@ -40,21 +41,23 @@ function shout()
 	var createdOn = yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
 	*/
 	var createdOn = Math.round(+new Date()/1000);//new Date().getTime();
-
 	shouts.set("message", message);
 	shouts.set("createdBy", user);
-	shouts.set("createdOn", createdOn);
+	shouts.set("createdOn", createdOn);	
 	 
 	shouts.save(null, {
 	  success: function(shouts) {
 		//alert('New object created with objectId: ' + shouts.id);
 		document.getElementById('shoutarea').value = "";
+		$('#btnShout').button('reset');
 		getShouts();
 	  },
 	  error: function(shouts, error) {
 		alert('Failed to create new object, with error code: ' + error.description);
+		$('#btnShout').button('reset');
 	  }
 	});
+	
 }
 
 function getShouts()
@@ -111,4 +114,9 @@ function getShouts()
 	  jQuery("abbr.timeago").timeago();
 	});
 */
+}
+
+function getShouters()
+{
+
 }
