@@ -8,7 +8,7 @@
 		<script src="plugins/jquery/jquery.js"></script>
 		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="css/custom.css">
-		<script src="plugins/bootstrap/js/bootstrap.js"></script>
+		<script src="plugins/bootstrap/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
 		<script src = "js/auth.js"></script>
 		<script src = "js/shout.js"></script>
@@ -19,44 +19,29 @@
 		<script src="plugins/mmenu/jquery.mmenu.js"></script>
 		<script src="plugins/hammer/jquery.hammer.js"></script>
 		<script src="plugins/moment/moment.min.js"></script>
-		<script src="plugins/livestamp/livestamp.min.js"></script>		
+		<script src="plugins/livestamp/livestamp.min.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
 		<div id="page">
 			<div id="header">
 				<a href="#menu-left"></a>
-				ShoutBox
-				<a href="#create-shout" class="friends right" onclick="showCreateShoutArea();"></a>
+				Shouters
 			</div>
 			<div id="content">
-				<div class="row">	
-					<div id="shoutListDiv" class="col-xs-12">
-						<img src="images/ajax-loader.gif" />&nbsp;Please wait...
-					</div>
-					<div id="shoutAreaDiv" class="col-xs-12"  style="display:none">
-						<div class="row">
-							<div class="col-xs-12">
-								<p class="pull-right">
-									<button type="button" class="btn btn-default btn-xs" onclick="hideCreateShoutArea();">Back</button>
-									<button id="btnShout" type="button" class="btn btn-success btn-xs" onclick="shout();" data-loading-text="...">Shout</button>
-								</p>
-							</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div id="shoutBoxDiv">						
+							<img src="images/ajax-loader.gif" />&nbsp;Retreving shouters...
 						</div>
-						<div class="row">
-							<div class="col-xs-12 pull-right">
-								<textarea class="form-control" id="shoutArea" placeholder="What's happening?" rows="10"></textarea>
-							</div>
-						</div>						
-					</div>
+					</div>				
 				</div>
 			</div>
-			<nav id="menu-left">
+			<nav id="menu">
 				<ul>
-					<li class="Selected"><a href="#">Profile</a></li>
-					<li><a href="search.html">Search Shouters</a></li>
-					<li><a href="following.html">Following</a></li>
-					<li><a href="followers.html">Followers</a></li>
+					<li><a href="shouts.html">Home</a></li>
+					<li><a href="#">Profile</a></li>
+					<li class="Selected"><a href="shouters.html">Shouters</a></li>
 					<li><a href="#">Settings</a></li>
 					<li><a href="#" onclick="logout();">Logout</a></li>
 				</ul>
@@ -70,9 +55,30 @@
 					dragOpen: true
 				});
 			});
-			
-			//isUserLoggedIn();
-			getShouts();
+
+			//right side menu
+			$(function() {
+
+				$('nav#menu-right').mmenu({
+					position	: 'right',
+					counters	: true,
+					searchfield	: true
+				});
+
+				//	Click a menu-item
+				var $confirm = $('#confirmation');
+				$('#menu-right a').not( '.mm-subopen' ).not( '.mm-subclose' ).bind(
+					'click.example',
+					function( e )
+					{
+						e.preventDefault();
+						$confirm.show().text( 'You clicked "' + $(this).text() + '"' );
+						$('#menu-right').trigger( 'close' );
+					}
+				);
+			});
+
+			getShouters();
 			
 		</script>
 	</body>

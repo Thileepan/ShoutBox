@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>shoutbox - shout your thoughts!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src="plugins/jquery/jquery.js"></script>
+		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<script src="plugins/bootstrap/js/bootstrap.js"></script>
+		<script src = "plugins/parse/js.parse.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
+		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
+		<script src="plugins/mmenu/jquery.mmenu.js"></script>
+		<script src="plugins/hammer/jquery.hammer.js"></script>
+	</head>
+	<body data-offset="50" data-twttr-rendered="true">
+		<div id="page">
+			<div id="header">
+				<a href="#menu-left"></a>
+				Search Shouters
+				<span class="pull-right">Back</span>
+			</div>
+			<nav id="menu-left">
+				<ul>
+					<li><a href="#">Profile</a></li>
+					<li class="Selected"><a href="search.html">Search Shouters</a></li>
+					<li><a href="following.html">Following</a></li>
+					<li><a href="followers.html">Followers</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#" onclick="logout();">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+		<script type="text/javascript">
+			
+			//left side menu
+			$(function() {
+				$('nav#menu-left').mmenu({
+					dragOpen: true
+				});
+			});
+			
+			searchShotuers();
+			
+		</script>
+	</body>
+</html>

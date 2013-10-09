@@ -11,6 +11,26 @@
 		<script src = "js/auth.js"></script>
 		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="css/custom.css">
+		<script type="text/javascript" charset="utf-8">
+
+		// Wait for PhoneGap to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+		document.addEventListener("offline", onOffline, false);
+
+		// PhoneGap is ready
+		//
+		function onDeviceReady() {
+			//var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+			alert("Device is ready!");
+		}
+
+		function onOffline() {
+			alert("No internet connection");
+			return false;
+		}
+
+		</script>
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
 		<div class="container">

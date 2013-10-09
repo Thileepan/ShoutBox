@@ -59,6 +59,12 @@ function signin()
 	$('#btnSignIn').button('loading');
 	Parse.User.logIn(email, password, {
 	  success: function(user) {
+		
+		//store the username and password in local storage
+		var storage = window.localStorage;
+		storage.setItem("shoutUserName", email);
+		storage.setItem("shoutPassword", password);
+
 		// Do stuff after successful login.
 		window.location.href = "shouts.html";
 	  },
@@ -79,7 +85,7 @@ function isUserLoggedIn()
 		window.location.href = "shouts.html";
 	} else {
 		// show the signup or login page
-		//window.location.href = "shouts.html";
+		//window.location.href = "index.html";
 	}
 }
 
