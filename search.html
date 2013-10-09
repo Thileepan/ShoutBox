@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<script src="plugins/bootstrap/js/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
+		<script src = "js/shout.js"></script>
 
 		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
 		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
@@ -21,7 +22,14 @@
 			<div id="header">
 				<a href="#menu-left"></a>
 				Search Shouters
-				<span class="pull-right">Back</span>
+				<span class="pull-right curHand" onclick="navigateHome();">Home</span>
+			</div>
+			<div id="content">
+				<div class="row">
+					<div class="col-xs-12" id="searchListDiv">
+						SKTG
+					</div>
+				</div>
 			</div>
 			<nav id="menu-left">
 				<ul>
@@ -43,7 +51,12 @@
 				});
 			});
 			
-			searchShotuers();
+			searchShouters();
+
+			function navigateHome()
+			{
+				window.location.href = "shouts.html";
+			}
 			
 		</script>
 	</body>

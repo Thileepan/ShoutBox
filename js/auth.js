@@ -61,9 +61,9 @@ function signin()
 	  success: function(user) {
 		
 		//store the username and password in local storage
-		var storage = window.localStorage;
-		storage.setItem("shoutUserName", email);
-		storage.setItem("shoutPassword", password);
+		//var storage = window.localStorage;
+		//storage.setItem("shoutUserName", email);
+		//storage.setItem("shoutPassword", password);
 
 		// Do stuff after successful login.
 		window.location.href = "shouts.html";

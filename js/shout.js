@@ -72,7 +72,7 @@ function getShouts()
 
 		// The object was retrieved successfully.
 		var shoutBoxHTML = '<a href="#" class="curHand" onclick="getShouts();">Refresh</a>';
-		shoutBoxHTML += '<ul class="list-group">';
+//		shoutBoxHTML += '<ul class="list-group">';
 		//alert("Successfully retrieved " + results.length + " scores.");
 		for (var i = 0; i < results.length; i++) {
 		  var object = results[i];
@@ -80,11 +80,11 @@ function getShouts()
 		//console.log('CreatedOn:' + object.get('createdOn'));
 		 //var _time = object.get('createdOn');
 		 //console.log(_time);
-		 shoutBoxHTML += '<li class="list-group-item">';
-			shoutBoxHTML += '<div class="row"><div class="col-xs-2"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png" alt="..." class="img-circle"></div><div class="col-xs-9">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muted"><small>' + object.get('message') + '</small></p></div><div class="col-xs-1"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
-		 shoutBoxHTML += '</li>';
+//		 shoutBoxHTML += '<li class="list-group-item">';
+			shoutBoxHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;"><div class="col-xs-2"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png" alt="..." class="img-circle"></div><div class="col-xs-8">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muted"><small>' + object.get('message') + '</small></p></div><div class="col-xs-2"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
+//		 shoutBoxHTML += '</li>';
 		}
-		shoutBoxHTML += '</ul>';
+//		shoutBoxHTML += '</ul>';
 
 		document.getElementById('shoutListDiv').innerHTML = shoutBoxHTML;
 	  },
@@ -139,6 +139,27 @@ function getFollowersList()
 {
 }
 
-function searchShotuers()
+function searchShouters()
 {
+	var query = new Parse.Query(Parse.User);
+	//query.equalTo(gender, "female");  // find all the women
+	query.find({
+		success: function(users) {
+			console.log(users);
+			var searchHTML = '';
+			for (var i = 0; i < users.length; i++)
+			{
+				var object = users[i];
+				searchHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;">';
+					searchHTML += '<div class="col-xs-9"><span class="text-info"><b>' + object.get('username') + '</b></span><p class="text-muted"><small>' + object.get('firstname') + '</small></p></div>';
+					searchHTML += '<div class="col-xs-3"><button type="button" class="btn btn-primary">Follow</button></div>';
+				searchHTML += '</div>';
+				document.getElementById('searchListDiv').innerHTML = searchHTML;
+			}
+
+		},
+		error: function(user, error) {
+			alert("Unable to list the shouters");
+		}
+	});
 }
