@@ -94,9 +94,8 @@ function currentLoggedInUser()
 	var currentUser = Parse.User.current();
 	if (currentUser) {
 		// do stuff with the user
-		return currentUser.get('firstname');
-	} else {
-		return "";
+		//console.log(currentUser);
+		return currentUser;
 	}
 }
 

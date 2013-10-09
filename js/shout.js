@@ -163,3 +163,40 @@ function searchShouters()
 		}
 	});
 }
+
+function loadSettings()
+{
+	var currentUser = currentLoggedInUser();
+	if(currentUser)
+	{
+		var userName = currentUser.get('username');
+		var firstname = currentUser.get('firstname');
+
+		var settingsHTML = '';
+		settingsHTML += '<form class="form-horizontal" role="form">';
+			settingsHTML += '<div class="form-group">';
+				settingsHTML += '<label class="col-xs-4 control-label text-info">UserName</label>';
+				settingsHTML += '<div class="col-xs-8">';
+					settingsHTML += '<p class="form-control-static">'+ userName +'</p>';
+				settingsHTML += '</div>';
+			settingsHTML += '</div>';
+			settingsHTML += '<div class="form-group">';
+				settingsHTML += '<label for="inputPassword" class="col-xs-4 control-label text-info">FirstName</label>';
+				settingsHTML += '<div class="col-xs-8">';
+					settingsHTML += '<input type="text" class="form-control" id="inputFirstName" placeholder="FirstName" value="'+ firstname +'">';
+				settingsHTML += '</div>';
+			settingsHTML += '</div>';
+			settingsHTML += '<div class="form-group">';
+				settingsHTML += '<div class="col-lg-offset-4 col-xs-8">';
+					settingsHTML += '<button type="submit" class="btn btn-default">Save</button>';
+				settingsHTML += '</div>';
+			settingsHTML += '</div>';
+		settingsHTML += '</form>';
+
+		document.getElementById('settingsDiv').innerHTML = settingsHTML;
+	}
+	else
+	{
+		alert("Unable to load the settings. Please try again.");
+	}
+}
