@@ -38,10 +38,11 @@ function shout()
 	var Shouts = Parse.Object.extend("Shouts");
 	var shouts = new Shouts();
 	var user = currentLoggedInUser();	
+	var name = user.get('firstname');
 	 
 	var createdOn = Math.round(+new Date()/1000);//new Date().getTime();
 	shouts.set("message", message);
-	shouts.set("createdBy", user);
+	shouts.set("createdBy", name);
 	shouts.set("createdOn", createdOn);	
 	 
 	shouts.save(null, {
@@ -105,6 +106,7 @@ function showCreateShoutArea()
 {
 	document.getElementById('shoutListDiv').style.display = 'none';
 	document.getElementById('shoutAreaDiv').style.display = '';
+	document.getElementById('shoutArea').focus();
 }
 
 function hideCreateShoutArea()
