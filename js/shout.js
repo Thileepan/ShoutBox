@@ -72,7 +72,7 @@ function getShouts()
 	  success: function(results) {
 
 		// The object was retrieved successfully.
-		var shoutBoxHTML = '<a href="#" class="curHand" onclick="getShouts();">Refresh</a>';
+		var shoutBoxHTML = '';//'<a href="#" class="curHand" onclick="getShouts();">Refresh</a>';
 //		shoutBoxHTML += '<ul class="list-group">';
 		//alert("Successfully retrieved " + results.length + " scores.");
 		for (var i = 0; i < results.length; i++) {
@@ -82,7 +82,7 @@ function getShouts()
 		 //var _time = object.get('createdOn');
 		 //console.log(_time);
 //		 shoutBoxHTML += '<li class="list-group-item">';
-			shoutBoxHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;"><div class="col-xs-2"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png" alt="..." class="img-circle"></div><div class="col-xs-8">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muted"><small>' + object.get('message') + '</small></p></div><div class="col-xs-2"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
+			shoutBoxHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;"><div class="col-xs-2"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png" alt="..." class="img-circle img-responsive"></div><div class="col-xs-8">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muteds"><small>' + object.get('message') + '</small></p></div><div class="col-xs-2"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
 //		 shoutBoxHTML += '</li>';
 		}
 //		shoutBoxHTML += '</ul>';
