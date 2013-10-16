@@ -106,7 +106,7 @@ function showCreateShoutArea()
 {
 	document.getElementById('shoutListDiv').style.display = 'none';
 	document.getElementById('shoutAreaDiv').style.display = '';
-	document.getElementById('shoutArea').focus();
+//	document.getElementById('shoutArea').focus();
 }
 
 function hideCreateShoutArea()
