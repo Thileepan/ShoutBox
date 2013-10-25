@@ -11,46 +11,46 @@
 		<script src="plugins/bootstrap/js/bootstrap.js"></script>
 		<script src = "plugins/parse/js.parse.js"></script>
 		<script src = "js/shout.js"></script>
-		<script src = "js/auth.js"></script>
-
-		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
-		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
-		<script src="plugins/mmenu/jquery.mmenu.js"></script>
-		<script src="plugins/hammer/jquery.hammer.js"></script>
+		<script src = "js/auth.js"></script>		
 	</head>
+
 	<body data-offset="50" data-twttr-rendered="true">
-		<div id="page">
-			<div id="header">
-				<a href="#menu-left"></a>
-				Settings
-				<span class="pull-right curHand" onclick="navigateHome();">Home</span>
-			</div>
-			<div id="content">
-				<div class="row">
-					<div class="col-xs-12" id="settingsDiv">
-						<img src="images/ajax-loader.gif" />&nbsp;Searching...
-					</div>
-				</div>
-			</div>
-			<nav id="menu-left">
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="search.html">Search</a></li>
-					<li><a href="following.html">Following</a></li>
-					<li><a href="followers.html">Followers</a></li>
-					<li class="Selected"><a href="settings.html">Settings</a></li>
-					<li><a href="#" onclick="logout();">Logout</a></li>
-				</ul>
-			</nav>
+		
+		<!-- HEADER -->
+		<div class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color:#109adc;" role="navigation">
+			<span>
+				<p style="padding-top:10px;padding-left:10px;"><button id="btnCreateShout" type="button" class="btn btn-primary btn-sm" onclick="showCreateShoutArea();">Home</button></p>
+			</span>
+			<span>
+				<a class="navbar-brand" href="#" style="color:white;"><b>Shoutbox</b></a>
+			</span>
+			<span class="text-right">
+				<p style="padding-top:10px;padding-right:10px;"><button id="btnCreateShout" type="button" class="btn btn-primary btn-sm" onclick="showCreateShoutArea();">Create</button><button id="btnBackShout" style="display:none;" type="button" class="btn btn-primary btn-sm" onclick="hideCreateShoutArea();">Back</button>&nbsp;<button id="btnSendShout" style="display:none;" type="button" class="btn btn-primary btn-sm" onclick="shout();" data-loading-text="...">Send</button></p>
+			</span>
 		</div>
+		<div class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;height:30px;" role="navigation">
+			<div class="row" style="padding:10px;">				
+				<div class="col-xs-4 curHand" onclick="getShouts();" align="center"><span style="border-bottom:3px solid #109adc;">Shouts</span></div>
+				<div class="col-xs-4" align="center"><span>Activity</span></div>
+				<div class="col-xs-4" align="center"><span>Profile</span></div>
+			</div>			
+		</div>
+		<!-- HEADER -->
+
+		<div style="margin-top:130px;">
+			<div id="mainDiv" class="col-xs-12">
+				<img src="images/ajax-loader.gif" />&nbsp;Please wait...
+			</div>
+			<div id="shoutAreaDiv" class="col-xs-12"  style="display:none">
+				<div class="row">
+					<div class="col-xs-12">
+						<textarea class="form-control" id="shoutArea" placeholder="What's happening around you?" rows="15"></textarea>
+					</div>
+				</div>						
+			</div>
+		</div>
+
 		<script type="text/javascript">
-			
-			//left side menu
-			$(function() {
-				$('nav#menu-left').mmenu({
-					dragOpen: true
-				});
-			});
 			
 			loadSettings();
 			//currentLoggedInUser();
@@ -58,8 +58,8 @@
 			function navigateHome()
 			{
 				window.location.href = "shouts.html";
-			}
-			
+			}			
 		</script>
+
 	</body>
 </html>

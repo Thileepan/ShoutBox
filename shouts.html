@@ -14,116 +14,46 @@
 		<script src = "js/shout.js"></script>
 		<script src = "js/blockwords.js"></script>
 
-		<!--
-		<link type="text/css" rel="stylesheet" href="plugins/mmenu/docs.css" />
-		<link type="text/css" rel="stylesheet" href="plugins/mmenu/mmenu.css" />
-		<script src="plugins/mmenu/jquery.mmenu.js"></script>
-		<script src="plugins/hammer/jquery.hammer.js"></script>
-		-->
-
 		<script src="plugins/moment/moment.min.js"></script>
 		<script src="plugins/livestamp/livestamp.min.js"></script>		
-		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	</head>
 	<body data-offset="50" data-twttr-rendered="true">
-		<!--
-		<div id="page">
-			<div id="header">
-				<a href="#menu-left"></a>
-				ShoutBox
-				<a href="#create-shout" class="friends right" onclick="showCreateShoutArea();"></a>
-			</div>
-			<div id="content">
-				<div class="row">
-					<div id="shoutListDiv" class="col-xs-12">
-						<img src="images/ajax-loader.gif" />&nbsp;Please wait...
-					</div>
-					<div id="shoutAreaDiv" class="col-xs-12"  style="display:none">
-						<div class="row">
-							<div class="col-xs-12">
-								<p class="pull-right">
-									<button type="button" class="btn btn-default" onclick="hideCreateShoutArea();">Back</button>
-									<button id="btnShout" type="button" class="btn btn-success" onclick="shout();" data-loading-text="...">Shout</button>
-								</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 pull-right">
-								<textarea class="form-control" id="shoutArea" placeholder="What's happening?" rows="10"></textarea>
-							</div>
-						</div>						
-					</div>
-				</div>
-			</div>
-			<nav id="menu-left">
-				<ul>
-					<li class="Selected"><a href="#">Home</a></li>
-					<li><a href="search.html">Search</a></li>
-					<li><a href="following.html">Following</a></li>
-					<li><a href="followers.html">Followers</a></li>
-					<li><a href="settings.html">Settings</a></li>
-					<li><a href="#" onclick="logout();">Logout</a></li>
-				</ul>
-			</nav>
-		</div>
-		-->
-
-		
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color:#336699;" role="navigation">
-			<div class="navbar-headers">
-				<a class="navbar-brand" href="#" style="color:white;">Shoutbox</a>
 				
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-					<li class="pull-right curHand" style="color:white;padding-right:30px;padding-top:10px;" onclick="showCreateShoutArea();"><img src="images/chat.png" class="img-responsive" width="16" height="16"></li>
-			</ul>
-
+		<!-- HEADER -->
+		<div class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color:#109adc;" role="navigation">
+			<span>
+				<a class="navbar-brand" href="#" style="color:white;"><b>Shoutbox</b></a>
+			</span>
+			<span class="text-right">
+				<p style="padding-top:10px;padding-right:10px;"><button id="btnCreateShout" type="button" class="btn btn-primary btn-sm" onclick="showCreateShoutArea();">Create</button><button id="btnBackShout" style="display:none;" type="button" class="btn btn-primary btn-sm" onclick="hideCreateShoutArea();">Back</button>&nbsp;<button id="btnSendShout" style="display:none;" type="button" class="btn btn-primary btn-sm" onclick="shout();" data-loading-text="...">Send</button></p>
+			</span>
 		</div>
-		<div class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;" role="navigation">
+		<div class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;height:30px;" role="navigation">
 			<div class="row" style="padding:10px;">				
-				<div class="col-xs-4 curHand" onclick="getShouts();"><b style="border-bottom:3px solid grey;">Shouts</b></div>
-				<div class="col-xs-4"><b>Activity</b></div>
-				<div class="col-xs-4"><b>Profile</b></div>
+				<div class="col-xs-4 curHand" onclick="getShouts();" align="center"><span id="spanPage1" style="border-bottom:3px solid #109adc;"><a href="#" style="color:black;">Shouts</a></span></div>
+				<div class="col-xs-4" onclick="" align="center"><span id="spanPage2"><a href="#" style="color:black;">Activity</a></span></div>
+				<div class="col-xs-4" onclick="loadSettings();" align="center"><span id="spanPage3"><a href="#" style="color:black;">Profile</a></span></div>
 			</div>			
 		</div>
+		<!-- HEADER -->
 
-			<div class="" style="margin-top:130px;">
-				<div id="shoutListDiv" class="col-xs-12">
-					<img src="images/ajax-loader.gif" />&nbsp;Please wait...
-				</div>
-				<div id="shoutAreaDiv" class="col-xs-12"  style="display:none">
-					<div class="row">
-						<div class="col-xs-12">
-							<p class="pull-right">
-								<button type="button" class="btn btn-default" onclick="hideCreateShoutArea();">Back</button>
-								<button id="btnShout" type="button" class="btn btn-primary" onclick="shout();" data-loading-text="...">Shout</button>
-							</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<textarea class="form-control" id="shoutArea" placeholder="What's up?" rows="15"></textarea>
-						</div>
-					</div>						
-				</div>
+		<div style="margin-top:130px;">
+			<div id="mainDiv" class="col-xs-12">
+				<img src="images/ajax-loader.gif" />&nbsp;Please wait...
 			</div>
+			<div id="shoutAreaDiv" class="col-xs-12"  style="display:none">
+				<div class="row">
+					<div class="col-xs-12">
+						<textarea class="form-control" id="shoutArea" placeholder="What's happening around you?" rows="15"></textarea>
+					</div>
+				</div>						
+			</div>
+		</div>
 
-		
-
-		
 		<script type="text/javascript">
-			/*
-			//left side menu
-			$(function() {
-				$('nav#menu-left').mmenu({
-					dragOpen: true
-				});
-			});
-			*/
-			
 			//isUserLoggedIn();
-			getShouts();
-			
+			//getShouts();
 		</script>
+
 	</body>
 </html>

@@ -33,7 +33,7 @@ function shout()
 		return false;
 	}
 
-	$('#btnShout').button('loading');
+	$('#btnSendShout').button('loading');
 
 	var Shouts = Parse.Object.extend("Shouts");
 	var shouts = new Shouts();
@@ -49,12 +49,12 @@ function shout()
 	  success: function(shouts) {
 		//alert('New object created with objectId: ' + shouts.id);
 		document.getElementById('shoutArea').value = "";
-		$('#btnShout').button('reset');
+		$('#btnSendShout').button('reset');
 		getShouts();
 	  },
 	  error: function(shouts, error) {
 		alert('Failed to create new object, with error code: ' + error.description);
-		$('#btnShout').button('reset');
+		$('#btnSendShout').button('reset');
 	  }
 	});
 	
@@ -62,8 +62,12 @@ function shout()
 
 function getShouts()
 {	
+	document.getElementById('spanPage1').style = 'border-bottom:3px solid #109adc;';
+	document.getElementById('spanPage2').style = '';
+	document.getElementById('spanPage3').style = '';
+
 	hideCreateShoutArea();
-	document.getElementById('shoutListDiv').innerHTML = '<img src="images/ajax-loader.gif" />&nbsp;Please wait...';
+	document.getElementById('mainDiv').innerHTML = '<img src="images/ajax-loader.gif" />&nbsp;Please wait...';
 
 	var Shouts = Parse.Object.extend("Shouts");
 	var query = new Parse.Query(Shouts);
@@ -82,12 +86,12 @@ function getShouts()
 		 //var _time = object.get('createdOn');
 		 //console.log(_time);
 //		 shoutBoxHTML += '<li class="list-group-item">';
-			shoutBoxHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;"><div class="col-xs-2"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png" alt="..." class="img-circle img-responsive"></div><div class="col-xs-8">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muteds"><small>' + object.get('message') + '</small></p></div><div class="col-xs-2"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
+			shoutBoxHTML += '<div class="row" style="border-bottom:1px solid lightgrey;padding-top:10px;"><div class="col-xs-2"><img src="images/shout.jpg" alt="..." class="img-thumbnail img-responsive"></div><div class="col-xs-8">' + '<span class="text-info"><b>' + object.get('createdBy') + '</b></span><p class="text-muteds"><small>' + object.get('message') + '</small></p></div><div class="col-xs-2"><small><abbr class="text-muted pull-right" data-livestamp="'+object.get('createdOn')+'"></abbr></small></div></div>';
 //		 shoutBoxHTML += '</li>';
 		}
 //		shoutBoxHTML += '</ul>';
 
-		document.getElementById('shoutListDiv').innerHTML = shoutBoxHTML;
+		document.getElementById('mainDiv').innerHTML = shoutBoxHTML;
 	  },
 	  error: function(object, error) {
 		// The object was not retrieved successfully.
@@ -104,15 +108,21 @@ function getShouts()
 
 function showCreateShoutArea()
 {
-	document.getElementById('shoutListDiv').style.display = 'none';
+	document.getElementById('mainDiv').style.display = 'none';
 	document.getElementById('shoutAreaDiv').style.display = '';
+	document.getElementById('btnCreateShout').style.display = 'none';
+	document.getElementById('btnBackShout').style.display = '';
+	document.getElementById('btnSendShout').style.display = '';
 //	document.getElementById('shoutArea').focus();
 }
 
 function hideCreateShoutArea()
 {
-	document.getElementById('shoutListDiv').style.display = '';
+	document.getElementById('mainDiv').style.display = '';
 	document.getElementById('shoutAreaDiv').style.display = 'none';
+	document.getElementById('btnCreateShout').style.display = '';
+	document.getElementById('btnBackShout').style.display = 'none';
+	document.getElementById('btnSendShout').style.display = 'none';
 }
 
 function getShouters()
@@ -168,13 +178,29 @@ function searchShouters()
 
 function loadSettings()
 {
+	document.getElementById('spanPage1').style = '';
+	document.getElementById('spanPage2').style = '';
+	document.getElementById('spanPage3').style = 'border-bottom:3px solid #109adc;';
+
 	var currentUser = currentLoggedInUser();
 	if(currentUser)
 	{
 		var userName = currentUser.get('username');
-		var firstname = currentUser.get('firstname');
+		var firstName = currentUser.get('firstname');
 
 		var settingsHTML = '';
+		settingsHTML += '<div class="panel panel-default">';
+			settingsHTML += '<div class="panel-body" align="center">';
+				settingsHTML += '<img src="images/profile-picture.jpg" alt="..." class="img-thumbnail img-responsive">';
+				settingsHTML += '<b>'+ firstName +'</b>';
+				settingsHTML += '<p>'+ userName + '</p>';
+			settingsHTML += '</div>';
+		settingsHTML += '</div>';
+		settingsHTML += '<div class="row">';
+			settingsHTML += '<div align="center"><button type="button" class="btn btn-primary">Following</button>&nbsp;';
+			settingsHTML += '<button type="button" class="btn btn-primary">Followers</button></div>';
+		settingsHTML += '</div>';
+/*
 		settingsHTML += '<form class="form-horizontal" role="form">';
 			settingsHTML += '<div class="form-group">';
 				settingsHTML += '<label class="col-xs-4 control-label text-info">UserName</label>';
@@ -185,7 +211,7 @@ function loadSettings()
 			settingsHTML += '<div class="form-group">';
 				settingsHTML += '<label for="inputPassword" class="col-xs-4 control-label text-info">FirstName</label>';
 				settingsHTML += '<div class="col-xs-8">';
-					settingsHTML += '<input type="text" class="form-control" id="inputFirstName" placeholder="FirstName" value="'+ firstname +'">';
+					settingsHTML += '<input type="text" class="form-control" id="inputFirstName" placeholder="FirstName" value="'+ firstName +'">';
 				settingsHTML += '</div>';
 			settingsHTML += '</div>';
 			settingsHTML += '<div class="form-group">';
@@ -194,8 +220,9 @@ function loadSettings()
 				settingsHTML += '</div>';
 			settingsHTML += '</div>';
 		settingsHTML += '</form>';
-
-		document.getElementById('settingsDiv').innerHTML = settingsHTML;
+*/
+		document.getElementById('mainDiv').innerHTML = settingsHTML;
+//		return settingsHTML;
 	}
 	else
 	{
