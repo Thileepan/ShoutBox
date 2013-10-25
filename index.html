@@ -42,8 +42,16 @@
 			<div class="row" id="signinDiv">
 				<div class="col-xs-12">
 					<form>
-						<input type="text" id="inputSignInEmail" value="" class="form-control" placeholder="Email" autofocus/><BR>
-						<input type="password" id="inputSignInPwd" value="" class="form-control" placeholder="Password" /><BR>
+						<div class="input-group">
+						  <span class="input-group-addon">@</span>
+						  <input type="text" id="inputSignInEmail" value="" class="form-control" placeholder="Username" autofocus>
+						</div>
+						<BR>
+						<div class="input-group">
+						  <span class="input-group-addon">**</span>
+						  <input type="password" id="inputSignInPwd" value="" class="form-control" placeholder="Password">
+						</div>
+						<BR>
 						<button id="btnSignIn" class="btn btn-medium btn-success btn-block" type="button" data-loading-text="Please wait..." onclick="signin();">Sign In</button><BR>						
 					</form>					
 				</div>
